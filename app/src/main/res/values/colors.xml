@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="orange">#EC5228</color>
+    <color name="light">#EF9651</color>
+    <color name="grey">#EFEFEF</color>
+    <color name="green">#3F7D58</color>
+    <color name="purple">#693382</color>
+    <color name="lavender">#8692f7</color>
+    <color name="lightPink">#EC7FA9</color>
+    <color name="pink_primary">#FF6B9E</color>
+    <color name="pink_light">#FFEBF3</color>
+    <color name="pink_dark">#D94B7E</color>
+    <color name="red">#FF4D4D</color>
+    <color name="text_dark">#333333</color>
+    <color name="text_secondary">#757575</color>
+    <color name="background">#F8F8F8</color>
+    <color name="red_button">#D32F2F</color>
+    <color name="gray_button">#616161</color>
+</resources>
