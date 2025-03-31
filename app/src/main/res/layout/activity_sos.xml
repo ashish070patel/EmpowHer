@@ -94,7 +94,7 @@
         android:drawablePadding="8dp"
         android:drawableTint="@color/white"
         android:padding="12dp"
-        android:text="Emergency Call (911)"
+        android:text="Emergency Call (112)"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

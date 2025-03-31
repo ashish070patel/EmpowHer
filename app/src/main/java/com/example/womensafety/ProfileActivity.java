@@ -836,35 +836,6 @@ public class ProfileActivity extends AppCompatActivity {
                     LOCATION_PERMISSION_REQUEST_CODE);
         }
     }
-    private void diagnoseSmsIssues() {
-        StringBuilder report = new StringBuilder();
-
-        String defaultSms = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT ?
-                Telephony.Sms.getDefaultSmsPackage(this) : "Unknown";
-        report.append("Default SMS app: ").append(defaultSms).append("\n");
-
-        try {
-            SmsManager smsManager = SmsManager.getDefault();
-            report.append("SMS manager: ").append(smsManager.getClass().getName()).append("\n");
-        } catch (Exception e) {
-            report.append("SMS manager error: ").append(e.getMessage()).append("\n");
-        }
-
-        TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-        if (tm != null) {
-            report.append("SIM state: ").append(tm.getSimState()).append("\n")
-                    .append("Network operator: ").append(tm.getNetworkOperatorName()).append("\n");
-        }
-
-        new AlertDialog.Builder(this)
-                .setTitle("SMS Diagnostic Report")
-                .setMessage(report.toString())
-                .setPositiveButton("OK", null)
-                .show();
-
-        Log.d("SMS_DIAGNOSTICS", report.toString());
-    }
-
 
     private void checkLocationPermissionAndFindPlaces(String placeType) {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
