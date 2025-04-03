@@ -668,60 +668,6 @@ public class ProfileActivity extends AppCompatActivity {
                 });
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (grantResults.length == 0) {
-            return;
-        }
-
-        switch (requestCode) {
-            case LOCATION_PERMISSION_REQUEST_CODE:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if (pendingPlaceSearch != null) {
-                        findNearbyPlaces(pendingPlaceSearch);
-                        pendingPlaceSearch = null;
-                    } else {
-                        shareCurrentLocation();
-                    }
-                } else {
-                    dismissProgressDialog();
-                    Toast.makeText(this, "Location permission required", Toast.LENGTH_LONG).show();
-                }
-                break;
-            case SMS_PERMISSION_REQUEST_CODE:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // Retry location sharing since we now have SMS permission
-                    shareCurrentLocation();
-                } else {
-                    Toast.makeText(this, "SMS permission required to share location",
-                            Toast.LENGTH_LONG).show();
-                }
-                break;
-            case DEFAULT_SMS_APP_REQUEST_CODE:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "Please try sending again", Toast.LENGTH_SHORT).show();
-                }
-                break;
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == LOCATION_SETTINGS_REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-                shareCurrentLocation();
-            } else {
-                dismissProgressDialog();
-                Toast.makeText(this, "Location services must be enabled to share location",
-                        Toast.LENGTH_LONG).show();
-            }
-        }
-    }
-
     private void shareCurrentLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
